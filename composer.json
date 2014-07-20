@@ -1,0 +1,25 @@
+{
+    "name": "matks/customer-support-bundle",
+    "license": "proprietary",
+    "type": "symfony-bundle",
+    "description": "Tickets-based bundle to integrate customer exchange in your symfony2 application",
+    "autoload": {
+        "psr-0": { "Matks\\Bundle\\CustomerSupportBundle": "" }
+    },
+    "target-dir": "Matks/Bundle/CustomerSupportBundle",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": ">=5.4.4",
+        "symfony/symfony": "2.3.*",
+        "symfony/framework-bundle": "2.3.*",
+        "doctrine/orm": ">=2.2.3,<2.4-dev",
+        "doctrine/doctrine-bundle": "1.2.*",
+        "knplabs/doctrine-behaviors": "dev-master"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1-dev"
+        }
+    }
+}
