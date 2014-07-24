@@ -24,7 +24,7 @@ In a bundle isolation context, just install the dev dependencies with composer
 $ composer install --dev
 ```
 
-Run the unit tests suite with atoum binary
+Run the unit tests suite with phpunit binary
 ```bash
 $ vendor/bin/phpunit --bootstrap vendor/autoload.php Tests/Units
 ```
