@@ -13,7 +13,7 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('customer_support');
+        $rootNode = $treeBuilder->root('matks_customer_support');
 
         return $treeBuilder;
     }

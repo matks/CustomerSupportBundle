@@ -1,8 +1,16 @@
 {
     "name": "matks/customer-support-bundle",
-    "license": "proprietary",
     "type": "symfony-bundle",
     "description": "Tickets-based bundle to integrate customer exchange in your symfony2 application",
+    "homepage": "https://github.com/matks/CustomerSupportBundle",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "Mathieu Ferment",
+            "email": "mathieu.ferment@gmail.com"
+        }
+    ],
     "autoload": {
         "psr-0": { "Matks\\Bundle\\CustomerSupportBundle": "" }
     },
@@ -16,6 +24,9 @@
         "doctrine/orm": ">=2.2.3,<2.4-dev",
         "doctrine/doctrine-bundle": "1.2.*",
         "knplabs/doctrine-behaviors": "dev-master"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.3.*@dev"
     },
     "extra": {
         "branch-alias": {
