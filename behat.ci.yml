@@ -1,0 +1,13 @@
+default:
+  paths:
+    features: Features
+    bootstrap: %behat.paths.features%/Context
+  context:
+    class: Matks\Bundle\CustomerSupportBundle\Features\Context\FeatureContext
+  extensions:
+    Behat\Symfony2Extension\Extension:
+      kernel:
+        env: test
+        debug: true
+        path: Tests/Fixtures/Project/app/AppKernel.php
+        bootstrap: Tests/Fixtures/Project/app/bootstrap.php

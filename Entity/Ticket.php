@@ -5,6 +5,7 @@ namespace Matks\Bundle\CustomerSupportBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 use Matks\Bundle\CustomerSupportBundle\Model\TicketInterface;
 use Matks\Bundle\CustomerSupportBundle\Model\MessageInterface;
@@ -18,6 +19,9 @@ use LogicException;
  *
  * @ORM\Entity(repositoryClass="Matks\Bundle\CustomerSupportBundle\\Repository\TicketRepository")
  * @ORM\Table(name="tickets")
+ * @UniqueEntity(fields="reference", message="this reference already exists")
+ *
+ * @author Mathieu Ferment <mathieu.ferment@gmail.com>
  */
 class Ticket implements TicketInterface
 {
@@ -52,6 +56,16 @@ class Ticket implements TicketInterface
     private $status;
 
     /**
+     * Ticket unique reference
+     *
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, unique=true)
+     * @Assert\NotBlank()
+     */
+    private $reference;
+
+    /**
      * @var MessageInterface[]
      *
      * @ORM\OneToMany(
@@ -66,12 +80,13 @@ class Ticket implements TicketInterface
     /**
      * Constructor
      */
-    public function __construct(CategoryInterface $category, MessageInterface $message)
+    public function __construct($reference, CategoryInterface $category, MessageInterface $message)
     {
         if (!$message->getAuthor()->isACustomer()) {
             throw new LogicException("Only customers can open a ticket");
         }
 
+        $this->reference = $reference;
         $this->status = TicketInterface::STATUS_NEW;
         $this->category = $category;
         $this->messages = new ArrayCollection();
@@ -85,6 +100,10 @@ class Ticket implements TicketInterface
      */
     public function answer(MessageInterface $message)
     {
+        if ($this->isClosed()) {
+            throw new LogicException("Cannot answer a closed ticket");
+        }
+
         if ($message->getAuthor()->isACustomer()) {
             throw new LogicException("Only company users can answer a ticket");
         }
@@ -101,6 +120,10 @@ class Ticket implements TicketInterface
      */
     public function reopen(MessageInterface $message)
     {
+        if ($this->isClosed()) {
+            throw new LogicException("Cannot reopen a closed ticket");
+        }
+        
         if (!$message->getAuthor()->isACustomer()) {
             throw new LogicException("Only customers can reopen a ticket");
         }
@@ -108,6 +131,14 @@ class Ticket implements TicketInterface
         $this->messages->add($message);
 
         $this->status = TicketInterface::STATUS_REOPENED;
+    }
+
+    /**
+     * Close a ticket in order to prevent future answers
+     */
+    public function close()
+    {
+        $this->status = TicketInterface::STATUS_CLOSED;
     }
 
     /**
@@ -122,6 +153,16 @@ class Ticket implements TicketInterface
         }
 
         $this->category = $category;
+    }
+
+    /**
+     * Get unique reference
+     *
+     * @return string
+     */
+    public function getReference()
+    {
+        return $this->reference;
     }
 
     /**
@@ -196,5 +237,13 @@ class Ticket implements TicketInterface
     public function isReopened()
     {
         return TicketInterface::STATUS_REOPENED === $this->status;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isClosed()
+    {
+        return TicketInterface::STATUS_CLOSED === $this->status;
     }
 }
