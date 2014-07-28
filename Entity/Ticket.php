@@ -123,7 +123,7 @@ class Ticket implements TicketInterface
         if ($this->isClosed()) {
             throw new LogicException("Cannot reopen a closed ticket");
         }
-        
+
         if (!$message->getAuthor()->isACustomer()) {
             throw new LogicException("Only customers can reopen a ticket");
         }
