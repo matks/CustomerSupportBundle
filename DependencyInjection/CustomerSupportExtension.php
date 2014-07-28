@@ -7,6 +7,11 @@ use Symfony\Component\Config\FileLocator;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
 
+/**
+ * Extension
+ *
+ * @author Mathieu Ferment <mathieu.ferment@gmail.com>
+ */
 class CustomerSupportExtension extends Extension
 {
     /**

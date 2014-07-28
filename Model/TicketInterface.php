@@ -4,12 +4,15 @@ namespace Matks\Bundle\CustomerSupportBundle\Model;
 
 /**
  * Ticket interface
+ *
+ * @author Mathieu Ferment <mathieu.ferment@gmail.com>
  */
 interface TicketInterface
 {
     const STATUS_NEW = 'new';
     const STATUS_ANSWERED = 'answered';
     const STATUS_REOPENED = 'reopened';
+    const STATUS_CLOSED = 'closed';
 
     /**
      * Get messages
@@ -17,6 +20,13 @@ interface TicketInterface
      * @return MessageInterface[]
      */
     public function getMessages();
+
+    /**
+     * Get unique reference
+     *
+     * @return string
+     */
+    public function getReference();
 
     /**
      * Get related category
@@ -38,6 +48,11 @@ interface TicketInterface
      * @param MessageInterface $message
      */
     public function reopen(MessageInterface $message);
+
+    /**
+     * Close a ticket in order to prevent future answers
+     */
+    public function close();
 
     /**
      * Change ticket category
@@ -81,4 +96,9 @@ interface TicketInterface
      * @return boolean
      */
     public function isReopened();
+
+    /**
+     * @return boolean
+     */
+    public function isClosed();
 }

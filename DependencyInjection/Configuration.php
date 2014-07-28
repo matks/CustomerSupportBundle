@@ -5,6 +5,11 @@ namespace Matks\Bundle\CustomerSupportBundle\DependencyInjection;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
+/**
+ * Configuration
+ *
+ * @author Mathieu Ferment <mathieu.ferment@gmail.com>
+ */
 class Configuration implements ConfigurationInterface
 {
     /**
@@ -13,7 +18,7 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('matks_customer_support');
+        $rootNode = $treeBuilder->root('matks_support');
 
         return $treeBuilder;
     }

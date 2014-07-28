@@ -3,7 +3,9 @@
 namespace Matks\Bundle\CustomerSupportBundle\Model;
 
 /**
- * Ticket interface
+ * Message interface
+ *
+ * @author Mathieu Ferment <mathieu.ferment@gmail.com>
  */
 interface MessageInterface
 {

@@ -3,11 +3,12 @@
 namespace Matks\Bundle\CustomerSupportBundle\Model;
 
 /**
- * Ticket interface
+ * Category interface
+ *
+ * @author Mathieu Ferment <mathieu.ferment@gmail.com>
  */
 interface CategoryInterface
 {
-
     /**
      * Get tickets associated
      *
