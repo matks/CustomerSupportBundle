@@ -49,7 +49,7 @@ class Category implements CategoryInterface
      *
      * @ORM\OneToMany(
      *     targetEntity="Matks\Bundle\CustomerSupportBundle\Model\TicketInterface",
-     *     mappedBy="tickets",
+     *     mappedBy="category",
      *     cascade={"persist", "remove", "merge"}
      * )
      * @Assert\Valid()
@@ -96,14 +96,14 @@ class Category implements CategoryInterface
         return $this->title;
     }
 
-    public function desactivate()
+    public function deactivate()
     {
         if (!$this->isActive()) {
-            throw new LogicException("Cannot desactivate category not active");
+            throw new LogicException("Cannot deactivate category not active");
         }
 
         if (!$this->getTickets()->isEmpty()) {
-            throw new LogicException("Cannot desactivate category with tickets associated");
+            throw new LogicException("Cannot deactivate category with tickets associated");
         }
 
         $this->enabled = false;

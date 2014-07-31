@@ -20,25 +20,25 @@ class CategoryTest extends PHPUnit_Framework_TestCase
         $this->assertInstanceOf('\Matks\Bundle\CustomerSupportBundle\Model\CategoryInterface', $category);
     }
 
-    public function testDesactivate()
+    public function testDeactivate()
     {
         $category = new Entity\Category('Payment issues');
 
-        $category->desactivate();
+        $category->deactivate();
 
         $this->assertFalse($category->isActive());
 
         $this->setExpectedException(
-          'LogicException', 'Cannot desactivate category not active'
+          'LogicException', 'Cannot deactivate category not active'
         );
-        $category->desactivate();
+        $category->deactivate();
     }
 
     public function testActivate()
     {
         $category = new Entity\Category('Payment issues');
 
-        $category->desactivate();
+        $category->deactivate();
         $category->activate();
 
         $this->assertTrue($category->isActive());

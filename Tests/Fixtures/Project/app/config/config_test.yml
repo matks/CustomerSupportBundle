@@ -1,0 +1,33 @@
+imports:
+    - { resource: database.php }
+
+# override some service configuration for test purposes
+services:
+    matks.test.prefix.generator:
+        class: Matks\Bundle\TestBundle\Service\PrefixIncrementReferenceGenerator
+        arguments: [@doctrine]
+
+    matks.support.ticket.manager:
+        class: Matks\Bundle\CustomerSupportBundle\Manager\TicketManager
+        arguments: [@doctrine, @matks.test.prefix.generator, %matks.support.ticket.class%]
+
+framework:
+    secret: test
+    test: ~
+    session:
+        storage_id: session.storage.mock_file
+    form:            true
+    csrf_protection: true
+    validation:
+        enabled: true
+        enable_annotations: true
+
+doctrine:
+    orm:
+        auto_generate_proxy_classes: %kernel.debug%
+        auto_mapping: true
+        resolve_target_entities:
+            Matks\Bundle\CustomerSupportBundle\Model\UserInterface: Matks\Bundle\CustomerSupportBundle\Entity\User
+            Matks\Bundle\CustomerSupportBundle\Model\MessageInterface: Matks\Bundle\CustomerSupportBundle\Entity\Message
+            Matks\Bundle\CustomerSupportBundle\Model\TicketInterface: Matks\Bundle\CustomerSupportBundle\Entity\Ticket
+            Matks\Bundle\CustomerSupportBundle\Model\CategoryInterface: Matks\Bundle\CustomerSupportBundle\Entity\Category

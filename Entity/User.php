@@ -12,13 +12,12 @@ use Matks\Bundle\CustomerSupportBundle\Model\UserInterface;
 /**
  * User entity
  *
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="Matks\Bundle\CustomerSupportBundle\Repository\UserRepository")
  * @ORM\InheritanceType("SINGLE_TABLE")
  * @ORM\DiscriminatorColumn(name="discr", type="string")
- *
- * @ORM\HasLifecycleCallbacks
  * @ORM\Table(name="users", indexes={@ORM\Index(name="user_email_idx", columns={"email"})})
- * @ORM\HasLifecycleCallbacks * @UniqueEntity(fields="email", message="this email already exists")
+ * @UniqueEntity(fields="email", message="this email already exists")
+ * @ORM\HasLifecycleCallbacks
  *
  * @author Mathieu Ferment <mathieu.ferment@gmail.com>
  */
@@ -120,6 +119,6 @@ class User implements UserInterface
 
     public function isACustomer()
     {
-        throw new \RuntimeException("Not implemented yet");
+        throw new Exception("This function should never be called on a user");
     }
 }

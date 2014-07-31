@@ -35,11 +35,11 @@ class TicketManager implements TicketManagerInterface
     /**
      * Constructor
      *
-     * @param ReferenceGeneratorInterface $referenceGenerator
      * @param ManagerRegistry             $doctrine
+     * @param ReferenceGeneratorInterface $referenceGenerator
      * @param string                      $ticketClass
      */
-    public function __construct(ReferenceGeneratorInterface $referenceGenerator, ManagerRegistry $doctrine, $ticketClass)
+    public function __construct(ManagerRegistry $doctrine, ReferenceGeneratorInterface $referenceGenerator, $ticketClass)
     {
         $this->referenceGenerator = $referenceGenerator;
         $this->doctrine = $doctrine;
@@ -85,6 +85,17 @@ class TicketManager implements TicketManagerInterface
     public function reopen(TicketInterface $ticket, MessageInterface $message)
     {
         $ticket->reopen($message);
+        $this->doctrine->getManager()->flush();
+    }
+
+    /**
+     * Close a ticket
+     *
+     * @param TicketInterface $ticket
+     */
+    public function close(TicketInterface $ticket)
+    {
+        $ticket->close();
         $this->doctrine->getManager()->flush();
     }
 

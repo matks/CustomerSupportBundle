@@ -17,7 +17,7 @@ use LogicException;
 /**
  * Ticket entity
  *
- * @ORM\Entity(repositoryClass="Matks\Bundle\CustomerSupportBundle\\Repository\TicketRepository")
+ * @ORM\Entity(repositoryClass="Matks\Bundle\CustomerSupportBundle\Repository\TicketRepository")
  * @ORM\Table(name="tickets")
  * @UniqueEntity(fields="reference", message="this reference already exists")
  *
