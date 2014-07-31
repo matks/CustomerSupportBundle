@@ -5,6 +5,11 @@ namespace Matks\Bundle\CustomerSupportBundle\Repository;
 use Matks\Bundle\CustomerSupportBundle\Model\TicketInterface;
 use Doctrine\ORM\EntityRepository;
 
+/**
+ * Ticket repository
+ *
+ * @author Mathieu Ferment <mathieu.ferment@gmail.com>
+ */
 class TicketRepository extends EntityRepository
 {
     public function countOpenedTickets()

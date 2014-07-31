@@ -6,7 +6,9 @@ use Matks\Bundle\CustomerSupportBundle\Reference\ReferenceGeneratorInterface;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
 /**
- * Predictable reference generator for test purpose only
+ * Predictable reference generator for test purposes only
+ *
+ * @author Mathieu Ferment <mathieu.ferment@gmail.com>
  */
 class PrefixIncrementReferenceGenerator implements ReferenceGeneratorInterface
 {

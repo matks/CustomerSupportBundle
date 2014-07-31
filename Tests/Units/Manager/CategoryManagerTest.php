@@ -7,6 +7,9 @@ use PHPUnit_Framework_TestCase;
 
 use Matks\Bundle\CustomerSupportBundle\Tests\Units\Util;
 
+/**
+ * @author Mathieu Ferment <mathieu.ferment@gmail.com>
+ */
 class CategoryManagerTest extends PHPUnit_Framework_TestCase
 {
     use Util\TestUtils;

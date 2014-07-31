@@ -13,6 +13,8 @@ use Doctrine\ORM\Tools\SchemaTool;
 
 /**
  * Behat Feature context main configuration
+ *
+ * @author Mathieu Ferment <mathieu.ferment@gmail.com>
  */
 class FeatureContext extends BehatContext implements KernelAwareInterface
 {

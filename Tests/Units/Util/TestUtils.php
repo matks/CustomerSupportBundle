@@ -4,6 +4,8 @@ namespace Matks\Bundle\CustomerSupportBundle\Tests\Units\Util;
 
 /**
  * Util shortcuts for tests
+ *
+ * @author Mathieu Ferment <mathieu.ferment@gmail.com>
  */
 trait TestUtils
 {

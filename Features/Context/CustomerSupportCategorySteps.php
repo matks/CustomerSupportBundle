@@ -10,6 +10,8 @@ use Exception;
 
 /**
  * CustomerSupportBundle behat steps
+ *
+ * @author Mathieu Ferment <mathieu.ferment@gmail.com>
  */
 trait CustomerSupportCategorySteps
 {
