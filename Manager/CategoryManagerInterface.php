@@ -20,11 +20,11 @@ interface CategoryManagerInterface
     public function create($title);
 
     /**
-     * Desactivate a category
+     * Deactivate a category
      *
      * @param CategoryInterface $category
      */
-    public function desactivate(CategoryInterface $category);
+    public function deactivate(CategoryInterface $category);
 
     /**
      * Reactivate a category

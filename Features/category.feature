@@ -12,11 +12,11 @@ Feature: Category management
 
     Scenario: Create new category
          When I create a new category with the title "Test category"
-          The category "Test category" should be active
+         Then the category "Test category" should be "active"
 
     Scenario: Manage categories
-         When I disactivate the category "Payment issues"
-          And I disactivate the category "Website issues"
-         Then the category "Payment issues" should be "disactivated"
+         When I deactivate the category "Payment issues"
+          And I deactivate the category "Website issues"
+         Then the category "Payment issues" should be "inactive"
          When I reactivate the category "Website issues"
-         Then category "Website issues" should be "activated"
+         Then the category "Website issues" should be "active"

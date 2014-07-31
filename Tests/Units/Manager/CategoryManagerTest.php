@@ -55,7 +55,7 @@ class CategoryManagerTest extends PHPUnit_Framework_TestCase
         $category = $manager->activate($categoryMock);
     }
 
-    public function testDesactivate()
+    public function testDeactivate()
     {
         $doctrineMock = $this->getBasicMock('\Doctrine\Common\Persistence\ManagerRegistry');
         $entityManagerMock = $this->getBasicMock('\Doctrine\Common\Persistence\ObjectManager');
@@ -69,8 +69,8 @@ class CategoryManagerTest extends PHPUnit_Framework_TestCase
         $entityManagerMock->expects($this->once())
                          ->method('flush');
         $categoryMock->expects($this->once())
-                         ->method('desactivate');
+                         ->method('deactivate');
 
-        $category = $manager->desactivate($categoryMock);
+        $category = $manager->deactivate($categoryMock);
     }
 }

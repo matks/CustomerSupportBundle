@@ -24,9 +24,9 @@ interface CategoryInterface
     public function getTitle();
 
     /**
-     * Desactivate category
+     * Deactivate category
      */
-    public function desactivate();
+    public function deactivate();
 
     /**
      * Activate category

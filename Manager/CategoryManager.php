@@ -50,13 +50,13 @@ class CategoryManager implements CategoryManagerInterface
     }
 
     /**
-     * Desactivate a category
+     * Deactivate a category
      *
      * @param CategoryInterface $category
      */
-    public function desactivate(CategoryInterface $category)
+    public function deactivate(CategoryInterface $category)
     {
-        $category->desactivate();
+        $category->deactivate();
         $this->doctrine->getManager()->flush();
     }
 

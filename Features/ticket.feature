@@ -38,7 +38,7 @@ Feature: Tickets lifecycle with a customer and a company agent
             | Re:Re:My invoice   | Hello Sir, Thank you for your answer. Cheers, Pierre |
          And I close the ticket "TICKET-1"
         Then I should have 0 opened tickets
-         And the ticket "TICKET-2" should be "closed"
+         And the ticket "TICKET-1" should be "closed"
 
     Scenario: Manage tickets
         Given I have 0 opened tickets
