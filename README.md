@@ -66,7 +66,3 @@ Run acceptance tests with behat binary using the fixture application and sqlite
 ```bash
 $ vendor/bin/behat -c behat.ci.yml
 ```
-
-### Application context
-
-To do
