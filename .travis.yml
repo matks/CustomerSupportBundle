@@ -1,7 +1,6 @@
 language: php
 
 php:
- - 5.3
  - 5.4
  - 5.5
 
@@ -10,3 +9,4 @@ before_script:
 
 script:
  - ./vendor/bin/phpunit --bootstrap vendor/autoload.php Tests/Units
+ - ./vendor/bin/behat -c behat.ci.yml
