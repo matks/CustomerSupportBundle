@@ -9,10 +9,10 @@ namespace Matks\Bundle\CustomerSupportBundle\Model;
  */
 interface TicketInterface
 {
-    const STATUS_NEW = 'new';
+    const STATUS_NEW      = 'new';
     const STATUS_ANSWERED = 'answered';
     const STATUS_REOPENED = 'reopened';
-    const STATUS_CLOSED = 'closed';
+    const STATUS_CLOSED   = 'closed';
 
     /**
      * Get messages

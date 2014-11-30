@@ -20,8 +20,7 @@ class PrefixIncrementReferenceGenerator implements ReferenceGeneratorInterface
             ->createQueryBuilder('i')
             ->select('COUNT(i)')
             ->getQuery()
-            ->getSingleScalarResult()
-        ;
+            ->getSingleScalarResult();
     }
 
     public function generate(array $options)

@@ -17,14 +17,14 @@ class TicketTest extends PHPUnit_Framework_TestCase
 
     public function testConstruct()
     {
-        $messageMock = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\MessageInterface');
+        $messageMock  = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\MessageInterface');
         $categoryMock = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\CategoryInterface');
-        $userMock = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\UserInterface');
+        $userMock     = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\UserInterface');
 
         $messageMock->method('getAuthor')
-                     ->willReturn($userMock);
+            ->willReturn($userMock);
         $userMock->method('isACustomer')
-                     ->willReturn(true);
+            ->willReturn(true);
 
         $ticket = new Entity\Ticket('ref', $categoryMock, $messageMock);
 
@@ -38,17 +38,17 @@ class TicketTest extends PHPUnit_Framework_TestCase
 
     public function testConstructWrongCase()
     {
-        $messageMock = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\MessageInterface');
+        $messageMock  = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\MessageInterface');
         $categoryMock = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\CategoryInterface');
-        $userMock = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\UserInterface');
+        $userMock     = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\UserInterface');
 
         $messageMock->method('getAuthor')
-                     ->willReturn($userMock);
+            ->willReturn($userMock);
         $userMock->method('isACustomer')
-                     ->willReturn(false);
+            ->willReturn(false);
 
         $this->setExpectedException(
-          'LogicException', 'Only customers can open a ticket'
+            'LogicException', 'Only customers can open a ticket'
         );
         $ticket = new Entity\Ticket('ref', $categoryMock, $messageMock);
     }
@@ -58,18 +58,18 @@ class TicketTest extends PHPUnit_Framework_TestCase
         $messageMock1 = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\MessageInterface');
         $messageMock2 = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\MessageInterface');
 
-        $userMock1 = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\UserInterface');
-        $userMock2 = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\UserInterface');
+        $userMock1    = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\UserInterface');
+        $userMock2    = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\UserInterface');
         $categoryMock = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\CategoryInterface');
 
         $messageMock1->method('getAuthor')
-                     ->willReturn($userMock1);
+            ->willReturn($userMock1);
         $userMock1->method('isACustomer')
-                     ->willReturn(true);
+            ->willReturn(true);
         $messageMock2->method('getAuthor')
-                     ->willReturn($userMock2);
+            ->willReturn($userMock2);
         $userMock2->method('isACustomer')
-                     ->willReturn(false);
+            ->willReturn(false);
 
         $ticket = new Entity\Ticket('ref', $categoryMock, $messageMock1);
 
@@ -86,23 +86,23 @@ class TicketTest extends PHPUnit_Framework_TestCase
         $messageMock1 = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\MessageInterface');
         $messageMock2 = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\MessageInterface');
 
-        $userMock1 = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\UserInterface');
-        $userMock2 = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\UserInterface');
+        $userMock1    = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\UserInterface');
+        $userMock2    = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\UserInterface');
         $categoryMock = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\CategoryInterface');
 
         $messageMock1->method('getAuthor')
-                     ->willReturn($userMock1);
+            ->willReturn($userMock1);
         $userMock1->method('isACustomer')
-                     ->willReturn(true);
+            ->willReturn(true);
         $messageMock2->method('getAuthor')
-                     ->willReturn($userMock2);
+            ->willReturn($userMock2);
         $userMock2->method('isACustomer')
-                     ->willReturn(true);
+            ->willReturn(true);
 
         $ticket = new Entity\Ticket('ref', $categoryMock, $messageMock1);
 
         $this->setExpectedException(
-          'LogicException', 'Only company users can answer a ticket'
+            'LogicException', 'Only company users can answer a ticket'
         );
 
         $ticket->answer($messageMock2);
@@ -114,20 +114,20 @@ class TicketTest extends PHPUnit_Framework_TestCase
         $messageMock2 = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\MessageInterface');
         $messageMock3 = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\MessageInterface');
 
-        $userMock1 = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\UserInterface');
-        $userMock2 = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\UserInterface');
+        $userMock1    = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\UserInterface');
+        $userMock2    = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\UserInterface');
         $categoryMock = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\CategoryInterface');
 
         $messageMock1->method('getAuthor')
-                     ->willReturn($userMock1);
+            ->willReturn($userMock1);
         $userMock1->method('isACustomer')
-                     ->willReturn(true);
+            ->willReturn(true);
         $messageMock2->method('getAuthor')
-                     ->willReturn($userMock2);
+            ->willReturn($userMock2);
         $userMock2->method('isACustomer')
-                     ->willReturn(false);
+            ->willReturn(false);
         $messageMock3->method('getAuthor')
-                     ->willReturn($userMock1);
+            ->willReturn($userMock1);
 
         $ticket = new Entity\Ticket('ref', $categoryMock, $messageMock1);
 
@@ -146,26 +146,26 @@ class TicketTest extends PHPUnit_Framework_TestCase
         $messageMock2 = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\MessageInterface');
         $messageMock3 = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\MessageInterface');
 
-        $userMock1 = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\UserInterface');
-        $userMock2 = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\UserInterface');
+        $userMock1    = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\UserInterface');
+        $userMock2    = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\UserInterface');
         $categoryMock = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\CategoryInterface');
 
         $messageMock1->method('getAuthor')
-                     ->willReturn($userMock1);
+            ->willReturn($userMock1);
         $userMock1->method('isACustomer')
-                     ->willReturn(true);
+            ->willReturn(true);
         $messageMock2->method('getAuthor')
-                     ->willReturn($userMock2);
+            ->willReturn($userMock2);
         $userMock2->method('isACustomer')
-                     ->willReturn(false);
+            ->willReturn(false);
         $messageMock3->method('getAuthor')
-                     ->willReturn($userMock2);
+            ->willReturn($userMock2);
 
         $ticket = new Entity\Ticket('ref', $categoryMock, $messageMock1);
         $ticket->answer($messageMock2);
 
         $this->setExpectedException(
-          'LogicException', 'Only customers can reopen a ticket'
+            'LogicException', 'Only customers can reopen a ticket'
         );
 
         $ticket->reopen($messageMock3);
@@ -174,17 +174,17 @@ class TicketTest extends PHPUnit_Framework_TestCase
     public function testChangeCategory()
     {
         $messageMock = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\MessageInterface');
-        $userMock = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\UserInterface');
+        $userMock    = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\UserInterface');
 
         $categoryMock1 = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\CategoryInterface');
         $categoryMock2 = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\CategoryInterface');
 
         $messageMock->method('getAuthor')
-                     ->willReturn($userMock);
+            ->willReturn($userMock);
         $userMock->method('isACustomer')
-                     ->willReturn(true);
+            ->willReturn(true);
         $categoryMock2->method('isActive')
-                     ->willReturn(true);
+            ->willReturn(true);
 
         $ticket = new Entity\Ticket('ref', $categoryMock1, $messageMock);
 
@@ -198,22 +198,22 @@ class TicketTest extends PHPUnit_Framework_TestCase
     public function testChangeCategoryWrongCase()
     {
         $messageMock = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\MessageInterface');
-        $userMock = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\UserInterface');
+        $userMock    = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\UserInterface');
 
         $categoryMock1 = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\CategoryInterface');
         $categoryMock2 = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\CategoryInterface');
 
         $messageMock->method('getAuthor')
-                     ->willReturn($userMock);
+            ->willReturn($userMock);
         $userMock->method('isACustomer')
-                     ->willReturn(true);
+            ->willReturn(true);
         $categoryMock2->method('isActive')
-                     ->willReturn(false);
+            ->willReturn(false);
 
         $ticket = new Entity\Ticket('ref', $categoryMock1, $messageMock);
 
         $this->setExpectedException(
-          'LogicException', 'Cannot set new ticket category for an inactive category'
+            'LogicException', 'Cannot set new ticket category for an inactive category'
         );
 
         $ticket->changeCategory($categoryMock2);
@@ -221,14 +221,14 @@ class TicketTest extends PHPUnit_Framework_TestCase
 
     public function testClose()
     {
-        $messageMock = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\MessageInterface');
-        $userMock = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\UserInterface');
+        $messageMock  = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\MessageInterface');
+        $userMock     = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\UserInterface');
         $categoryMock = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\CategoryInterface');
 
         $messageMock->method('getAuthor')
-                     ->willReturn($userMock);
+            ->willReturn($userMock);
         $userMock->method('isACustomer')
-                     ->willReturn(true);
+            ->willReturn(true);
 
         $ticket = new Entity\Ticket('ref', $categoryMock, $messageMock);
         $ticket->close();
@@ -239,20 +239,20 @@ class TicketTest extends PHPUnit_Framework_TestCase
 
     public function testAnswerAfterClose()
     {
-        $messageMock = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\MessageInterface');
-        $userMock = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\UserInterface');
+        $messageMock  = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\MessageInterface');
+        $userMock     = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\UserInterface');
         $categoryMock = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\CategoryInterface');
 
         $messageMock->method('getAuthor')
-                     ->willReturn($userMock);
+            ->willReturn($userMock);
         $userMock->method('isACustomer')
-                     ->willReturn(true);
+            ->willReturn(true);
 
         $ticket = new Entity\Ticket('ref', $categoryMock, $messageMock);
         $ticket->close();
 
         $this->setExpectedException(
-          'LogicException', 'Cannot answer a closed ticket'
+            'LogicException', 'Cannot answer a closed ticket'
         );
 
         $ticket->answer($messageMock);
@@ -260,20 +260,20 @@ class TicketTest extends PHPUnit_Framework_TestCase
 
     public function testReopenAfterClose()
     {
-        $messageMock = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\MessageInterface');
-        $userMock = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\UserInterface');
+        $messageMock  = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\MessageInterface');
+        $userMock     = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\UserInterface');
         $categoryMock = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\CategoryInterface');
 
         $messageMock->method('getAuthor')
-                     ->willReturn($userMock);
+            ->willReturn($userMock);
         $userMock->method('isACustomer')
-                     ->willReturn(true);
+            ->willReturn(true);
 
         $ticket = new Entity\Ticket('ref', $categoryMock, $messageMock);
         $ticket->close();
 
         $this->setExpectedException(
-          'LogicException', 'Cannot reopen a closed ticket'
+            'LogicException', 'Cannot reopen a closed ticket'
         );
 
         $ticket->reopen($messageMock);

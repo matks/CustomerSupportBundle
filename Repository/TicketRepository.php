@@ -17,8 +17,7 @@ class TicketRepository extends EntityRepository
         $queryBuilder = $this->createQueryBuilder('t')
             ->select('COUNT(t.id)')
             ->where('t.status IN (:openedStatuses)')
-            ->setParameter(':openedStatuses', [TicketInterface::STATUS_NEW, TicketInterface::STATUS_REOPENED])
-        ;
+            ->setParameter(':openedStatuses', [TicketInterface::STATUS_NEW, TicketInterface::STATUS_REOPENED]);
 
         return $queryBuilder->getQuery()->getSingleScalarResult();
     }

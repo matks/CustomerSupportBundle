@@ -32,7 +32,7 @@ class CategoryTest extends PHPUnit_Framework_TestCase
         $this->assertFalse($category->isActive());
 
         $this->setExpectedException(
-          'LogicException', 'Cannot deactivate category not active'
+            'LogicException', 'Cannot deactivate category not active'
         );
         $category->deactivate();
     }
@@ -47,7 +47,7 @@ class CategoryTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($category->isActive());
 
         $this->setExpectedException(
-          'LogicException', 'Cannot activate category already active'
+            'LogicException', 'Cannot activate category already active'
         );
         $category->activate();
     }

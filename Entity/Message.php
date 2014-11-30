@@ -77,8 +77,8 @@ class Message implements MessageInterface
      */
     public function __construct($title, UserInterface $user, $content)
     {
-        $this->title = $title;
-        $this->user = $user;
+        $this->title   = $title;
+        $this->user    = $user;
         $this->content = $content;
     }
 

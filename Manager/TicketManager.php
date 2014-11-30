@@ -42,8 +42,8 @@ class TicketManager implements TicketManagerInterface
     public function __construct(ManagerRegistry $doctrine, ReferenceGeneratorInterface $referenceGenerator, $ticketClass)
     {
         $this->referenceGenerator = $referenceGenerator;
-        $this->doctrine = $doctrine;
-        $this->ticketClass = $ticketClass;
+        $this->doctrine           = $doctrine;
+        $this->ticketClass        = $ticketClass;
     }
 
     /**
@@ -51,6 +51,7 @@ class TicketManager implements TicketManagerInterface
      *
      * @param  CategoryInterface $category
      * @param  MessageInterface  $message
+     *
      * @return TicketInterface
      */
     public function create(CategoryInterface $category, MessageInterface $message)

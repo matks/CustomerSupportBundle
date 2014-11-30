@@ -11,7 +11,9 @@ interface ReferenceGeneratorInterface
 {
     /**
      * Generate unique reference
-     * @param  array  $options
+     *
+     * @param  array $options
+     *
      * @return string
      */
     public function generate(array $options);

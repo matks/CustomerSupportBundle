@@ -31,13 +31,15 @@ class CategoryManager implements CategoryManagerInterface
      */
     public function __construct(ManagerRegistry $doctrine, $categoryClass)
     {
-        $this->doctrine = $doctrine;
+        $this->doctrine      = $doctrine;
         $this->categoryClass = $categoryClass;
     }
 
     /**
      * Create a new category
-     * @param  string            $title
+     *
+     * @param  string $title
+     *
      * @return CategoryInterface
      */
     public function create($title)

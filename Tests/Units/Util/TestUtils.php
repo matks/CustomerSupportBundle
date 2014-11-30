@@ -13,8 +13,8 @@ trait TestUtils
     private function getBasicMock($className)
     {
         $mock = $this->getMockBuilder($className)
-                     ->disableOriginalConstructor()
-                     ->getMock();
+            ->disableOriginalConstructor()
+            ->getMock();
 
         return $mock;
     }

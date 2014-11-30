@@ -14,7 +14,9 @@ interface CategoryManagerInterface
 
     /**
      * Create a new category
-     * @param  string            $title
+     *
+     * @param  string $title
+     *
      * @return CategoryInterface
      */
     public function create($title);

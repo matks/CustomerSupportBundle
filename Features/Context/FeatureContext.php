@@ -82,9 +82,9 @@ class FeatureContext extends BehatContext implements KernelAwareInterface
     public static function clearCache(SuiteEvent $event)
     {
         $tempDir = is_writable(__DIR__ . '/../../build/tmp') ? __DIR__ . '/../../build/tmp/' : sys_get_temp_dir() . '/MatksCustomerSupportBundle/';
-        $fs = new Filesystem();
+        $fs      = new Filesystem();
         try {
-            $fs->remove($tempDir.'/*');
+            $fs->remove($tempDir . '/*');
         } catch (IOException $e) {
             throw new \Exception(sprintf('Unable to clear the test application cache at "%s"', $tempDir));
         }
@@ -100,7 +100,7 @@ class FeatureContext extends BehatContext implements KernelAwareInterface
     public function buildSchema($event)
     {
         $entityManager = $this->getEntityManager();
-        $metadata = $entityManager->getMetadataFactory()->getAllMetadata();
+        $metadata      = $entityManager->getMetadataFactory()->getAllMetadata();
 
         if (!empty($metadata)) {
             $tool = new SchemaTool($entityManager);

@@ -71,7 +71,7 @@ class Category implements CategoryInterface
      */
     public function __construct($title)
     {
-        $this->title = $title;
+        $this->title   = $title;
         $this->tickets = new ArrayCollection();
         $this->enabled = true;
     }

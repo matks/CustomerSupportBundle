@@ -15,7 +15,8 @@ class TimeReferenceGenerator implements ReferenceGeneratorInterface
     /**
      * Generate unique reference based on current time
      *
-     * @param  array  $options
+     * @param  array $options
+     *
      * @return string
      */
     public function generate(array $options)
@@ -25,7 +26,7 @@ class TimeReferenceGenerator implements ReferenceGeneratorInterface
         list($usec, $sec) = explode(' ', microtime());
 
         $microtime = explode('.', $usec)[1];
-        $datetime = (new DateTime())->format('YmdHis');
+        $datetime  = (new DateTime())->format('YmdHis');
 
         return $datetime . $microtime . $randomPart;
     }

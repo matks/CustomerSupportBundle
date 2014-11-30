@@ -1,8 +1,8 @@
 <?xml version="1.0" ?>
 
 <container xmlns="http://symfony.com/schema/dic/services"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
         <parameter key="matks.support.category.class">Matks\Bundle\CustomerSupportBundle\Entity\Category</parameter>
@@ -12,29 +12,29 @@
 
     <services>
         <service
-            id="matks.support.ticket.manager"
-            class="Matks\Bundle\CustomerSupportBundle\Manager\TicketManager"
-            public="true"
-            abstract="false">
+                id="matks.support.ticket.manager"
+                class="Matks\Bundle\CustomerSupportBundle\Manager\TicketManager"
+                public="true"
+                abstract="false">
             <argument type="service" id="doctrine"/>
             <argument type="service" id="matks.support.time.reference.generator"/>
             <argument>%matks.support.ticket.class%</argument>
         </service>
 
         <service
-            id="matks.support.category.manager"
-            class="Matks\Bundle\CustomerSupportBundle\Manager\CategoryManager"
-            public="true"
-            abstract="false">
+                id="matks.support.category.manager"
+                class="Matks\Bundle\CustomerSupportBundle\Manager\CategoryManager"
+                public="true"
+                abstract="false">
             <argument type="service" id="doctrine"/>
             <argument>%matks.support.category.class%</argument>
         </service>
 
         <service
-            id="matks.support.time.reference.generator"
-            class="Matks\Bundle\CustomerSupportBundle\Reference\TimeReferenceGenerator"
-            public="false"
-            abstract="false">
+                id="matks.support.time.reference.generator"
+                class="Matks\Bundle\CustomerSupportBundle\Reference\TimeReferenceGenerator"
+                public="false"
+                abstract="false">
         </service>
     </services>
 

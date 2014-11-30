@@ -26,8 +26,7 @@ trait CustomerSupportCategorySteps
             ->kernel
             ->getContainer()
             ->get('doctrine.orm.entity_manager')
-            ->getRepository('CustomerSupportBundle:Category')
-        ;
+            ->getRepository('CustomerSupportBundle:Category');
     }
 
     /**
@@ -45,7 +44,8 @@ trait CustomerSupportCategorySteps
      *
      * @Transform /^category "([^"]*)"$/
      *
-     * @param  string         $reference
+     * @param  string $reference
+     *
      * @return Category
      * @throws LogicException
      */
@@ -103,7 +103,7 @@ trait CustomerSupportCategorySteps
                 break;
 
             default:
-                throw new Exception("Unknown category action ".$action);
+                throw new Exception("Unknown category action " . $action);
                 break;
         }
     }
@@ -116,18 +116,18 @@ trait CustomerSupportCategorySteps
         switch ($state) {
             case 'active':
                 if (!$category->isActive()) {
-                    throw new Exception("Category ".$category->getTitle()." is not active");
+                    throw new Exception("Category " . $category->getTitle() . " is not active");
                 }
                 break;
 
             case 'inactive':
                 if ($category->isActive()) {
-                    throw new Exception("Category ".$category->getTitle()." is active");
+                    throw new Exception("Category " . $category->getTitle() . " is active");
                 }
                 break;
 
             default:
-                throw new Exception("Unknown category state ".$state);
+                throw new Exception("Unknown category state " . $state);
                 break;
         }
     }
@@ -138,7 +138,7 @@ trait CustomerSupportCategorySteps
     public function assertCategoryEmpty(Category $category)
     {
         if (!$category->getTickets()->isEmpty()) {
-            throw new Exception("Category ".$category->getTitle()." should be empty but is not");
+            throw new Exception("Category " . $category->getTitle() . " should be empty but is not");
         }
     }
 

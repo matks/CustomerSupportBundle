@@ -68,8 +68,8 @@ class User implements UserInterface
     public function __construct($firstName, $lastName, $email)
     {
         $this->firstName = $firstName;
-        $this->lastName = $lastName;
-        $this->email = $email;
+        $this->lastName  = $lastName;
+        $this->email     = $email;
     }
 
     public function __toString()

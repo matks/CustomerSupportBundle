@@ -17,7 +17,7 @@ class TicketManagerTest extends PHPUnit_Framework_TestCase
     public function testConstruct()
     {
         $referenceGeneratorMock = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Reference\ReferenceGeneratorInterface');
-        $doctrineMock = $this->getBasicMock('\Doctrine\Common\Persistence\ManagerRegistry');
+        $doctrineMock           = $this->getBasicMock('\Doctrine\Common\Persistence\ManagerRegistry');
 
         $manager = new Manager\TicketManager($doctrineMock, $referenceGeneratorMock, 'foo');
     }
@@ -25,28 +25,28 @@ class TicketManagerTest extends PHPUnit_Framework_TestCase
     public function testCreate()
     {
         $referenceGeneratorMock = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Reference\ReferenceGeneratorInterface');
-        $doctrineMock = $this->getBasicMock('\Doctrine\Common\Persistence\ManagerRegistry');
-        $entityManagerMock = $this->getBasicMock('\Doctrine\Common\Persistence\ObjectManager');
+        $doctrineMock           = $this->getBasicMock('\Doctrine\Common\Persistence\ManagerRegistry');
+        $entityManagerMock      = $this->getBasicMock('\Doctrine\Common\Persistence\ObjectManager');
 
         $categoryMock = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\CategoryInterface');
-        $messageMock = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\MessageInterface');
-        $userMock = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\UserInterface');
+        $messageMock  = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\MessageInterface');
+        $userMock     = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\UserInterface');
 
         $doctrineMock->method('getManager')
-                     ->willReturn($entityManagerMock);
+            ->willReturn($entityManagerMock);
         $messageMock->method('getAuthor')
-                     ->willReturn($userMock);
+            ->willReturn($userMock);
         $userMock->method('isACustomer')
-                     ->willReturn(true);
+            ->willReturn(true);
 
         $manager = new Manager\TicketManager($doctrineMock, $referenceGeneratorMock, '\Matks\Bundle\CustomerSupportBundle\Entity\Ticket');
 
         $entityManagerMock->expects($this->once())
-                         ->method('persist');
+            ->method('persist');
         $entityManagerMock->expects($this->once())
-                         ->method('flush');
+            ->method('flush');
         $referenceGeneratorMock->expects($this->once())
-                         ->method('generate');
+            ->method('generate');
 
         $ticket = $manager->create($categoryMock, $messageMock);
     }
@@ -54,21 +54,21 @@ class TicketManagerTest extends PHPUnit_Framework_TestCase
     public function testAnswer()
     {
         $referenceGeneratorMock = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Reference\ReferenceGeneratorInterface');
-        $doctrineMock = $this->getBasicMock('\Doctrine\Common\Persistence\ManagerRegistry');
-        $entityManagerMock = $this->getBasicMock('\Doctrine\Common\Persistence\ObjectManager');
+        $doctrineMock           = $this->getBasicMock('\Doctrine\Common\Persistence\ManagerRegistry');
+        $entityManagerMock      = $this->getBasicMock('\Doctrine\Common\Persistence\ObjectManager');
 
-        $ticketMock = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\TicketInterface');
+        $ticketMock  = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\TicketInterface');
         $messageMock = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\MessageInterface');
 
         $doctrineMock->method('getManager')
-                     ->willReturn($entityManagerMock);
+            ->willReturn($entityManagerMock);
 
         $manager = new Manager\TicketManager($doctrineMock, $referenceGeneratorMock, 'foo');
 
         $entityManagerMock->expects($this->once())
-                         ->method('flush');
+            ->method('flush');
         $ticketMock->expects($this->once())
-                         ->method('answer');
+            ->method('answer');
 
         $manager->answer($ticketMock, $messageMock);
     }
@@ -76,21 +76,21 @@ class TicketManagerTest extends PHPUnit_Framework_TestCase
     public function testReopen()
     {
         $referenceGeneratorMock = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Reference\ReferenceGeneratorInterface');
-        $doctrineMock = $this->getBasicMock('\Doctrine\Common\Persistence\ManagerRegistry');
-        $entityManagerMock = $this->getBasicMock('\Doctrine\Common\Persistence\ObjectManager');
+        $doctrineMock           = $this->getBasicMock('\Doctrine\Common\Persistence\ManagerRegistry');
+        $entityManagerMock      = $this->getBasicMock('\Doctrine\Common\Persistence\ObjectManager');
 
-        $ticketMock = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\TicketInterface');
+        $ticketMock  = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\TicketInterface');
         $messageMock = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\MessageInterface');
 
         $doctrineMock->method('getManager')
-                     ->willReturn($entityManagerMock);
+            ->willReturn($entityManagerMock);
 
         $manager = new Manager\TicketManager($doctrineMock, $referenceGeneratorMock, 'foo');
 
         $entityManagerMock->expects($this->once())
-                         ->method('flush');
+            ->method('flush');
         $ticketMock->expects($this->once())
-                         ->method('reopen');
+            ->method('reopen');
 
         $manager->reopen($ticketMock, $messageMock);
     }
@@ -98,20 +98,20 @@ class TicketManagerTest extends PHPUnit_Framework_TestCase
     public function testClose()
     {
         $referenceGeneratorMock = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Reference\ReferenceGeneratorInterface');
-        $doctrineMock = $this->getBasicMock('\Doctrine\Common\Persistence\ManagerRegistry');
-        $entityManagerMock = $this->getBasicMock('\Doctrine\Common\Persistence\ObjectManager');
+        $doctrineMock           = $this->getBasicMock('\Doctrine\Common\Persistence\ManagerRegistry');
+        $entityManagerMock      = $this->getBasicMock('\Doctrine\Common\Persistence\ObjectManager');
 
         $ticketMock = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\TicketInterface');
 
         $doctrineMock->method('getManager')
-                     ->willReturn($entityManagerMock);
+            ->willReturn($entityManagerMock);
 
         $manager = new Manager\TicketManager($doctrineMock, $referenceGeneratorMock, 'foo');
 
         $entityManagerMock->expects($this->once())
-                         ->method('flush');
+            ->method('flush');
         $ticketMock->expects($this->once())
-                         ->method('close');
+            ->method('close');
 
         $manager->close($ticketMock);
     }
@@ -119,21 +119,21 @@ class TicketManagerTest extends PHPUnit_Framework_TestCase
     public function testChangeCategory()
     {
         $referenceGeneratorMock = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Reference\ReferenceGeneratorInterface');
-        $doctrineMock = $this->getBasicMock('\Doctrine\Common\Persistence\ManagerRegistry');
-        $entityManagerMock = $this->getBasicMock('\Doctrine\Common\Persistence\ObjectManager');
+        $doctrineMock           = $this->getBasicMock('\Doctrine\Common\Persistence\ManagerRegistry');
+        $entityManagerMock      = $this->getBasicMock('\Doctrine\Common\Persistence\ObjectManager');
 
         $categoryMock = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\CategoryInterface');
-        $ticketMock = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\TicketInterface');
+        $ticketMock   = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\TicketInterface');
 
         $doctrineMock->method('getManager')
-                     ->willReturn($entityManagerMock);
+            ->willReturn($entityManagerMock);
 
         $manager = new Manager\TicketManager($doctrineMock, $referenceGeneratorMock, 'foo');
 
         $entityManagerMock->expects($this->once())
-                         ->method('flush');
+            ->method('flush');
         $ticketMock->expects($this->once())
-                         ->method('changeCategory');
+            ->method('changeCategory');
 
         $manager->changeCategory($ticketMock, $categoryMock);
     }

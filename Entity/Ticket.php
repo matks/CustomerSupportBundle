@@ -87,9 +87,9 @@ class Ticket implements TicketInterface
         }
 
         $this->reference = $reference;
-        $this->status = TicketInterface::STATUS_NEW;
-        $this->category = $category;
-        $this->messages = new ArrayCollection();
+        $this->status    = TicketInterface::STATUS_NEW;
+        $this->category  = $category;
+        $this->messages  = new ArrayCollection();
         $this->messages->add($message);
     }
 

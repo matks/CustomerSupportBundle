@@ -32,8 +32,7 @@ trait CustomerSupportTicketSteps
             ->kernel
             ->getContainer()
             ->get('doctrine.orm.entity_manager')
-            ->getRepository('CustomerSupportBundle:Ticket')
-        ;
+            ->getRepository('CustomerSupportBundle:Ticket');
     }
 
     /**
@@ -47,8 +46,7 @@ trait CustomerSupportTicketSteps
             ->kernel
             ->getContainer()
             ->get('doctrine.orm.entity_manager')
-            ->getRepository('CustomerSupportBundle:User')
-        ;
+            ->getRepository('CustomerSupportBundle:User');
     }
 
     /**
@@ -66,7 +64,8 @@ trait CustomerSupportTicketSteps
      *
      * @Transform /^user "([^"]*)"$/
      *
-     * @param  string         $email
+     * @param  string $email
+     *
      * @return UserInterface
      * @throws LogicException
      */
@@ -86,7 +85,8 @@ trait CustomerSupportTicketSteps
      *
      * @Transform /^ticket "([^"]*)"$/
      *
-     * @param  string         $reference
+     * @param  string $reference
+     *
      * @return Ticket
      * @throws LogicException
      */
@@ -118,7 +118,7 @@ trait CustomerSupportTicketSteps
                     break;
 
                 default:
-                    throw new Exception("Unknown user type ".$data['type']);
+                    throw new Exception("Unknown user type " . $data['type']);
                     break;
             }
 
@@ -201,7 +201,6 @@ trait CustomerSupportTicketSteps
     }
 
 
-
     /**
      * @Given /^I have (\d+) opened tickets$/
      * @Then /^I should have (\d+) opened tickets$/
@@ -210,7 +209,7 @@ trait CustomerSupportTicketSteps
     {
         $openedTickets = $this->getTicketRepository()->countOpenedTickets();
         if ($count !== $openedTickets) {
-            throw new Exception("Opened tickets should be ".$count." but are actually ".$openedTickets);
+            throw new Exception("Opened tickets should be " . $count . " but are actually " . $openedTickets);
         }
     }
 
@@ -220,7 +219,7 @@ trait CustomerSupportTicketSteps
     public function assertTicketStatus(Ticket $ticket, $state)
     {
         if ($ticket->getStatus() !== $state) {
-            throw new Exception("Ticket should be ".$state." but is ".$ticket->getStatus());
+            throw new Exception("Ticket should be " . $state . " but is " . $ticket->getStatus());
         }
     }
 
@@ -230,7 +229,7 @@ trait CustomerSupportTicketSteps
     public function assertTicketCategory(Ticket $ticket, Category $category)
     {
         if ($ticket->getCategory()->getTitle() !== $category->getTitle()) {
-            throw new Exception("Ticket should be in category ".$category->getTitle()." but is in ".$ticket->getCategory()->getTitle());
+            throw new Exception("Ticket should be in category " . $category->getTitle() . " but is in " . $ticket->getCategory()->getTitle());
         }
     }
 

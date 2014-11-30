@@ -15,14 +15,17 @@ interface TicketManagerInterface
 {
     /**
      * Create a new ticket
+     *
      * @param  CategoryInterface $category
      * @param  MessageInterface  $message
+     *
      * @return TicketInterface
      */
     public function create(CategoryInterface $category, MessageInterface $message);
 
     /**
      * Answer to a ticket
+     *
      * @param TicketInterface  $ticket
      * @param MessageInterface $message
      */
@@ -30,6 +33,7 @@ interface TicketManagerInterface
 
     /**
      * Reopen an answered ticket
+     *
      * @param TicketInterface  $ticket
      * @param MessageInterface $message
      */
@@ -37,6 +41,7 @@ interface TicketManagerInterface
 
     /**
      * Shift a ticket category
+     *
      * @param TicketInterface   $ticket
      * @param CategoryInterface $category
      */
