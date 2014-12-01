@@ -1,6 +1,6 @@
 filter:
     paths: [*]
-    excluded_paths: [vendor/*]
+    excluded_paths: [vendor/*, Tests/*, Features/*]
 before_commands:
     - 'composer install --dev'
 tools:
@@ -13,10 +13,10 @@ tools:
     php_pdepend: true
     php_loc:
         enabled: true
-        excluded_dirs: [vendor]
+        excluded_dirs: [vendor, Tests, Features]
     php_cpd:
         enabled: true
-        excluded_dirs: [vendor]
+        excluded_dirs: [vendor, Tests, Features]
 
 checks:
     php:
