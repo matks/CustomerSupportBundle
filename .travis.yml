@@ -8,5 +8,9 @@ before_script:
  - composer install --dev
 
 script:
- - ./vendor/bin/phpunit --bootstrap vendor/autoload.php Tests/Units
+ - ./vendor/bin/phpunit --bootstrap vendor/autoload.php --coverage-clover build/logs/coverage.clover Tests/Units
  - ./vendor/bin/behat -c behat.ci.yml
+
+after_script:
+ - wget https://scrutinizer-ci.com/ocular.phar
+ - php ocular.phar code-coverage:upload --format=php-clover build/logs/coverage.clover
