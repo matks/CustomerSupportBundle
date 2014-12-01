@@ -3,8 +3,12 @@ CustomerSupportBundle
 
 [![Latest Stable Version](https://poser.pugx.org/matks/customer-support-bundle/v/stable.svg)](https://packagist.org/packages/matks/customer-support-bundle)
 [![Build Status](https://travis-ci.org/matks/CustomerSupportBundle.png)](https://travis-ci.org/matks/CustomerSupportBundle)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/matks/CustomerSupportBundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/matks/CustomerSupportBundle/?branch=master)
 [![Latest Unstable Version](https://poser.pugx.org/matks/customer-support-bundle/v/unstable.svg)](https://packagist.org/packages/matks/customer-support-bundle)
 [![License](https://poser.pugx.org/matks/customer-support-bundle/license.svg)](https://packagist.org/packages/matks/customer-support-bundle)
+
+
+
 
 Tickets-based bundle to integrate customer exchange in your symfony2 application
 
