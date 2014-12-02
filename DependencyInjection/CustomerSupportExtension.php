@@ -8,7 +8,7 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
 
 /**
- * Extension
+ * Customer Support Extension
  *
  * @author Mathieu Ferment <mathieu.ferment@gmail.com>
  */

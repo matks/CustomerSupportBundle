@@ -27,7 +27,7 @@ interface UserInterface
     /**
      * Whether user is a customer or a company agent
      *
-     * @return boolean
+     * @return bool
      */
     public function isACustomer();
 }

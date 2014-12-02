@@ -77,8 +77,13 @@ class Ticket implements TicketInterface
      */
     private $messages;
 
+
     /**
      * Constructor
+     *
+     * @param string            $reference
+     * @param CategoryInterface $category
+     * @param MessageInterface  $message
      */
     public function __construct($reference, CategoryInterface $category, MessageInterface $message)
     {
@@ -216,7 +221,7 @@ class Ticket implements TicketInterface
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function isNew()
     {
@@ -224,7 +229,7 @@ class Ticket implements TicketInterface
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function isAnswered()
     {
@@ -232,7 +237,7 @@ class Ticket implements TicketInterface
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function isReopened()
     {
@@ -240,7 +245,7 @@ class Ticket implements TicketInterface
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function isClosed()
     {

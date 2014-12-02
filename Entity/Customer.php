@@ -13,6 +13,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Customer extends User
 {
+    /**
+     * @return bool
+     */
     public function isACustomer()
     {
         return true;

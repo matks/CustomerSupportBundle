@@ -15,7 +15,7 @@ class TimeReferenceGenerator implements ReferenceGeneratorInterface
     /**
      * Generate unique reference based on current time
      *
-     * @param  array $options
+     * @param array $options
      *
      * @return string
      */

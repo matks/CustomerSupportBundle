@@ -119,7 +119,7 @@ class Category implements CategoryInterface
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function isActive()
     {

@@ -83,22 +83,22 @@ interface TicketInterface
     public function getStatus();
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function isNew();
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function isAnswered();
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function isReopened();
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function isClosed();
 }

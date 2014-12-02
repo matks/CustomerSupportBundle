@@ -34,7 +34,7 @@ interface CategoryInterface
     public function activate();
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function isActive();
 }

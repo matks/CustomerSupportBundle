@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Exception;
 
 use Matks\Bundle\CustomerSupportBundle\Model\UserInterface;
 
@@ -64,6 +65,10 @@ class User implements UserInterface
 
     /**
      * Constructor
+     *
+     * @param string $firstName
+     * @param string $lastName
+     * @param string $email
      */
     public function __construct($firstName, $lastName, $email)
     {
@@ -72,6 +77,9 @@ class User implements UserInterface
         $this->email     = $email;
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return $this->email;
@@ -117,6 +125,10 @@ class User implements UserInterface
         return $this->email;
     }
 
+    /**
+     * @return bool
+     * @throws Exception: should be called on children classes
+     */
     public function isACustomer()
     {
         throw new Exception("This function should never be called on a user");

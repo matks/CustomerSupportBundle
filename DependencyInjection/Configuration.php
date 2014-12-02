@@ -6,7 +6,7 @@ use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 /**
- * Configuration
+ * Customer Support Configuration
  *
  * @author Mathieu Ferment <mathieu.ferment@gmail.com>
  */
