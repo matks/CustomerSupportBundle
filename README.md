@@ -20,7 +20,7 @@ Add the private repository metadata in your composer.json
 ```json
 {
     "require": {
-        "matks/customer-support-bundle": "1.0"
+        "matks/customer-support-bundle": "1.1"
     },
 }
 ```
