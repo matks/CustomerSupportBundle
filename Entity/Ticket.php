@@ -37,7 +37,7 @@ class Ticket implements TicketInterface
     private $id;
 
     /**
-     * @var TicketInterface
+     * @var CategoryInterface
      *
      * @ORM\ManyToOne(
      *      targetEntity="Matks\Bundle\CustomerSupportBundle\Model\CategoryInterface",
