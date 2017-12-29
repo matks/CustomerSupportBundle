@@ -3,14 +3,11 @@
 namespace Matks\Bundle\CustomerSupportBundle\Tests\Units\Reference;
 
 use Matks\Bundle\CustomerSupportBundle\Reference;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
 use Matks\Bundle\CustomerSupportBundle\Tests\Units\Util;
 
-/**
- * @author Mathieu Ferment <mathieu.ferment@gmail.com>
- */
-class TimeReferenceGeneratorTest extends PHPUnit_Framework_TestCase
+class TimeReferenceGeneratorTest extends TestCase
 {
     use Util\TestUtils;
 

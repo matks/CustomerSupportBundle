@@ -3,14 +3,11 @@
 namespace Matks\Bundle\CustomerSupportBundle\Tests\Units\Entity;
 
 use Matks\Bundle\CustomerSupportBundle\Entity;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
 use Matks\Bundle\CustomerSupportBundle\Tests\Units\Util;
 
-/**
- * @author Mathieu Ferment <mathieu.ferment@gmail.com>
- */
-class MessageTest extends PHPUnit_Framework_TestCase
+class MessageTest extends TestCase
 {
     use Util\TestUtils;
 

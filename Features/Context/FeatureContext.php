@@ -2,37 +2,24 @@
 
 namespace Matks\Bundle\CustomerSupportBundle\Features\Context;
 
-use Behat\Behat\Context\BehatContext;
-use Behat\Behat\Event\ScenarioEvent;
-use Behat\Behat\Event\SuiteEvent;
-use Symfony\Component\HttpKernel\KernelInterface;
-use Behat\Symfony2Extension\Context\KernelAwareInterface;
-use Symfony\Component\Filesystem\Filesystem;
-use Symfony\Component\Filesystem\Exception\IOException;
-use Doctrine\ORM\Tools\SchemaTool;
 
-/**
- * Behat Feature context main configuration
- *
- * @author Mathieu Ferment <mathieu.ferment@gmail.com>
- */
-class FeatureContext extends BehatContext implements KernelAwareInterface
+use Behat\Symfony2Extension\Context\KernelAwareContext;
+use Behat\Testwork\Hook\Scope\BeforeSuiteScope;
+use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ORM\Tools\SchemaTool;
+use Symfony\Component\Filesystem\Exception\IOException;
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\HttpKernel\KernelInterface;
+
+class FeatureContext implements KernelAwareContext
 {
     use CustomerSupportCategorySteps;
     use CustomerSupportTicketSteps;
 
-    private $kernel;
-    private $parameters;
-
     /**
-     * Initializes context with parameters from behat.yml.
-     *
-     * @param array $parameters
+     * @var KernelInterface
      */
-    public function __construct(array $parameters)
-    {
-        $this->parameters = $parameters;
-    }
+    private $kernel;
 
     /**
      * Sets Kernel instance.
@@ -67,7 +54,7 @@ class FeatureContext extends BehatContext implements KernelAwareInterface
     /**
      * Return the object persistence manager
      *
-     * @return Doctrine\Common\Persistence\ObjectManager
+     * @return ObjectManager
      */
     public function getEntityManager()
     {
@@ -77,12 +64,12 @@ class FeatureContext extends BehatContext implements KernelAwareInterface
     /**
      * @BeforeSuite
      *
-     * @param SuiteEvent $event
+     * @param BeforeSuiteScope $event
      */
-    public static function clearCache(SuiteEvent $event)
+    public static function clearCache(BeforeSuiteScope $event)
     {
         $tempDir = is_writable(__DIR__ . '/../../build/tmp') ? __DIR__ . '/../../build/tmp/' : sys_get_temp_dir() . '/MatksCustomerSupportBundle/';
-        $fs      = new Filesystem();
+        $fs = new Filesystem();
         try {
             $fs->remove($tempDir . '/*');
         } catch (IOException $e) {
@@ -92,15 +79,11 @@ class FeatureContext extends BehatContext implements KernelAwareInterface
 
     /**
      * @BeforeScenario
-     *
-     * @param \Behat\Behat\Event\ScenarioEvent|\Behat\Behat\Event\OutlineExampleEvent $event
-     *
-     * @return null
      */
     public function buildSchema($event)
     {
         $entityManager = $this->getEntityManager();
-        $metadata      = $entityManager->getMetadataFactory()->getAllMetadata();
+        $metadata = $entityManager->getMetadataFactory()->getAllMetadata();
 
         if (!empty($metadata)) {
             $tool = new SchemaTool($entityManager);
@@ -117,17 +100,5 @@ class FeatureContext extends BehatContext implements KernelAwareInterface
     public function clearEntityManager()
     {
         $this->getEntityManager()->clear();
-    }
-
-    /**
-     * Returns a specific context parameter.
-     *
-     * @param string $name
-     *
-     * @return mixed
-     */
-    public function getParameter($name)
-    {
-        return isset($this->parameters[$name]) ? $this->parameters[$name] : null;
     }
 }

@@ -3,14 +3,12 @@
 namespace Matks\Bundle\CustomerSupportBundle\Tests\Units\Entity;
 
 use Matks\Bundle\CustomerSupportBundle\Entity;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
 use Matks\Bundle\CustomerSupportBundle\Tests\Units\Util;
+use LogicException;
 
-/**
- * @author Mathieu Ferment <mathieu.ferment@gmail.com>
- */
-class CategoryTest extends PHPUnit_Framework_TestCase
+class CategoryTest extends TestCase
 {
     use Util\TestUtils;
 
@@ -31,9 +29,8 @@ class CategoryTest extends PHPUnit_Framework_TestCase
 
         $this->assertFalse($category->isActive());
 
-        $this->setExpectedException(
-            'LogicException', 'Cannot deactivate category not active'
-        );
+        $this->expectException(LogicException::class);
+        $this->expectExceptionMessage('Cannot deactivate category not active');
         $category->deactivate();
     }
 
@@ -46,9 +43,8 @@ class CategoryTest extends PHPUnit_Framework_TestCase
 
         $this->assertTrue($category->isActive());
 
-        $this->setExpectedException(
-            'LogicException', 'Cannot activate category already active'
-        );
+        $this->expectException(LogicException::class);
+        $this->expectExceptionMessage('Cannot activate category already active');
         $category->activate();
     }
 

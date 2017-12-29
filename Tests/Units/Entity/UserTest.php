@@ -3,12 +3,9 @@
 namespace Matks\Bundle\CustomerSupportBundle\Tests\Units\Entity;
 
 use Matks\Bundle\CustomerSupportBundle\Entity;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
-/**
- * @author Mathieu Ferment <mathieu.ferment@gmail.com>
- */
-class UserTest extends PHPUnit_Framework_TestCase
+class UserTest extends TestCase
 {
 
     public function testConstruct()

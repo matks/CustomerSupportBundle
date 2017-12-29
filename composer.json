@@ -4,34 +4,20 @@
     "description": "Tickets-based bundle to integrate customer exchange in your symfony2 application",
     "homepage": "https://github.com/matks/CustomerSupportBundle",
     "license": "MIT",
-    "minimum-stability": "dev",
-    "authors": [
-        {
-            "name": "Mathieu Ferment",
-            "email": "mathieu.ferment@gmail.com"
-        }
-    ],
     "autoload": {
         "psr-0": { "Matks\\Bundle\\CustomerSupportBundle": "" }
     },
     "target-dir": "Matks/Bundle/CustomerSupportBundle",
-    "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": ">=5.4.4",
-        "symfony/symfony": "2.3.*",
-        "symfony/framework-bundle": "2.3.*",
-        "doctrine/orm": ">=2.2.3,<2.4-dev",
-        "doctrine/doctrine-bundle": "1.2.*",
-        "knplabs/doctrine-behaviors": "dev-master"
+        "symfony/symfony": "^4.0",
+        "doctrine/orm": "^2.6",
+        "doctrine/doctrine-bundle": "^1.8",
+        "knplabs/doctrine-behaviors": "^1.5"
     },
     "require-dev": {
-        "phpunit/phpunit": "4.3.*@dev",
-        "behat/symfony2-extension": "1.1.*"
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.2-dev"
-        }
+        "phpunit/phpunit": "^6.5",
+        "behat/symfony2-extension": "^2.1",
+        "codedungeon/phpunit-result-printer": "^0.4.4"
     }
 }

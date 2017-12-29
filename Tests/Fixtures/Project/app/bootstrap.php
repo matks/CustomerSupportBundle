@@ -8,5 +8,4 @@ if (!file_exists($file = __DIR__ . '/../../../../vendor/autoload.php')) {
 $loader = require $file;
 $loader->add('Matks\\Bundle', array(realpath(dirname(__FILE__) . '/../src')));
 
-//AnnotationRegistry::registerLoader(array($loader, 'loadClass'));
-AnnotationRegistry::registerLoader('class_exists');
+require __DIR__.'/AppKernel.php';

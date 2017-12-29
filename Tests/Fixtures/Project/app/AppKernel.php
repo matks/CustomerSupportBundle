@@ -5,8 +5,6 @@ use Symfony\Component\Config\Loader\LoaderInterface;
 
 /**
  * Appkernel for tests
- *
- * @author Mathieu Ferment <mathieu.ferment@gmail.com>
  */
 class AppKernel extends Kernel
 {
