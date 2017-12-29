@@ -14,6 +14,9 @@ tools:
     external_code_coverage:
         timeout: 600
 build:
+    environment:
+        php:
+            version: 7.1
     nodes:
         analysis:
             project_setup:
@@ -22,4 +25,8 @@ build:
                 override: [php-scrutinizer-run]
     tests:
         override:
-            - phpcs-run
+            -
+                command: 'vendor/bin/phpunit --bootstrap vendor/autoload.php --coverage-clover=coverage.clover Tests/Units'
+                coverage:
+                    file: 'coverage-clover'
+                    format: 'clover'
