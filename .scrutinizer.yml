@@ -6,8 +6,7 @@ filter:
 build:
     dependencies:
         before:
-            -
-                command: 'composer install'
+            - 'composer install'
 checks:
     php: true
 build:
@@ -22,8 +21,5 @@ build:
                 override: [php-scrutinizer-run]
     tests:
         override:
-            -
-                command: 'vendor/bin/phpunit --bootstrap vendor/autoload.php --coverage-clover=coverage.clover Tests/Units'
-                coverage:
-                    file: 'coverage-clover'
-                    format: 'clover'
+            before:
+                - 'vendor/bin/phpunit --bootstrap vendor/autoload.php --coverage-clover=coverage.clover Tests/Units'
