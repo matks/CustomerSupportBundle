@@ -10,6 +10,9 @@ build:
                 command: 'composer install'
 checks:
     php: true
+tools:
+    external_code_coverage:
+        timeout: 600
 build:
     nodes:
         analysis:
