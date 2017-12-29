@@ -69,10 +69,12 @@ $ composer install --dev
 
 Run the unit tests suite with phpunit binary
 ```bash
-$ vendor/bin/phpunit --bootstrap vendor/autoload.php Tests/Units
+$ vendor/bin/phpunit --bootstrap vendor/autoload.php --printer=Codedungeon\\PHPUnitPrettyResultPrinter\\Printer Tests/Units
 ```
 
 Run acceptance tests with behat binary using the fixture application and sqlite
 ```bash
 $ vendor/bin/behat -c behat.ci.yml
 ```
+
+

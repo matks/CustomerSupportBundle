@@ -3,14 +3,11 @@
 namespace Matks\Bundle\CustomerSupportBundle\Tests\Units\Manager;
 
 use Matks\Bundle\CustomerSupportBundle\Manager;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
 use Matks\Bundle\CustomerSupportBundle\Tests\Units\Util;
 
-/**
- * @author Mathieu Ferment <mathieu.ferment@gmail.com>
- */
-class CategoryManagerTest extends PHPUnit_Framework_TestCase
+class CategoryManagerTest extends TestCase
 {
     use Util\TestUtils;
 

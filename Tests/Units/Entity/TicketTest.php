@@ -4,14 +4,12 @@ namespace Matks\Bundle\CustomerSupportBundle\Tests\Units\Entity;
 
 use Matks\Bundle\CustomerSupportBundle\Entity;
 use Matks\Bundle\CustomerSupportBundle\Model\TicketInterface;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
 use Matks\Bundle\CustomerSupportBundle\Tests\Units\Util;
+use LogicException;
 
-/**
- * @author Mathieu Ferment <mathieu.ferment@gmail.com>
- */
-class TicketTest extends PHPUnit_Framework_TestCase
+class TicketTest extends TestCase
 {
     use Util\TestUtils;
 
@@ -47,9 +45,8 @@ class TicketTest extends PHPUnit_Framework_TestCase
         $userMock->method('isACustomer')
             ->willReturn(false);
 
-        $this->setExpectedException(
-            'LogicException', 'Only customers can open a ticket'
-        );
+        $this->expectException(LogicException::class);
+        $this->expectExceptionMessage('Only customers can open a ticket');
         $ticket = new Entity\Ticket('ref', $categoryMock, $messageMock);
     }
 
@@ -101,9 +98,8 @@ class TicketTest extends PHPUnit_Framework_TestCase
 
         $ticket = new Entity\Ticket('ref', $categoryMock, $messageMock1);
 
-        $this->setExpectedException(
-            'LogicException', 'Only company users can answer a ticket'
-        );
+        $this->expectException(LogicException::class);
+        $this->expectExceptionMessage('Only company users can answer a ticket');
 
         $ticket->answer($messageMock2);
     }
@@ -164,9 +160,8 @@ class TicketTest extends PHPUnit_Framework_TestCase
         $ticket = new Entity\Ticket('ref', $categoryMock, $messageMock1);
         $ticket->answer($messageMock2);
 
-        $this->setExpectedException(
-            'LogicException', 'Only customers can reopen a ticket'
-        );
+        $this->expectException(LogicException::class);
+        $this->expectExceptionMessage('Only customers can reopen a ticket');
 
         $ticket->reopen($messageMock3);
     }
@@ -212,9 +207,8 @@ class TicketTest extends PHPUnit_Framework_TestCase
 
         $ticket = new Entity\Ticket('ref', $categoryMock1, $messageMock);
 
-        $this->setExpectedException(
-            'LogicException', 'Cannot set new ticket category for an inactive category'
-        );
+        $this->expectException(LogicException::class);
+        $this->expectExceptionMessage('Cannot set new ticket category for an inactive category');
 
         $ticket->changeCategory($categoryMock2);
     }
@@ -251,9 +245,8 @@ class TicketTest extends PHPUnit_Framework_TestCase
         $ticket = new Entity\Ticket('ref', $categoryMock, $messageMock);
         $ticket->close();
 
-        $this->setExpectedException(
-            'LogicException', 'Cannot answer a closed ticket'
-        );
+        $this->expectException(LogicException::class);
+        $this->expectExceptionMessage('Cannot answer a closed ticket');
 
         $ticket->answer($messageMock);
     }
@@ -272,9 +265,8 @@ class TicketTest extends PHPUnit_Framework_TestCase
         $ticket = new Entity\Ticket('ref', $categoryMock, $messageMock);
         $ticket->close();
 
-        $this->setExpectedException(
-            'LogicException', 'Cannot reopen a closed ticket'
-        );
+        $this->expectException(LogicException::class);
+        $this->expectExceptionMessage('Cannot reopen a closed ticket');
 
         $ticket->reopen($messageMock);
     }
