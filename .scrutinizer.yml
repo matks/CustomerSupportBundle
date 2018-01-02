@@ -20,5 +20,5 @@ build:
             tests:
                 override: [php-scrutinizer-run]
     tests:
-        before:
-             - 'vendor/bin/phpunit --bootstrap vendor/autoload.php --coverage-clover=coverage.clover Tests/Units'
+        override:
+            - 'vendor/bin/phpunit --bootstrap vendor/autoload.php Tests/Units'
