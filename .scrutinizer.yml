@@ -1,24 +1,11 @@
-filter:
-    excluded_paths:
-        - Tests/*
-        - vendor/*
-        - Features/*
 build:
     dependencies:
         before:
             - 'composer install'
-checks:
-    php: true
 build:
     environment:
         php:
             version: 7.1
-    nodes:
-        analysis:
-            project_setup:
-                override: true
-            tests:
-                override: [php-scrutinizer-run]
     tests:
         override:
             - 'vendor/bin/phpunit --bootstrap vendor/autoload.php Tests/Units'
