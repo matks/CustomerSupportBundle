@@ -3,6 +3,8 @@
     <testsuites>
         <testsuite name="Bundle Test Suite">
             <directory>Tests/Units</directory>
+            <exclude>vendor</exclude>
+            <exclude>Tests/Fixtures</exclude>
         </testsuite>
     </testsuites>
     <filter>
