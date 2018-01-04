@@ -1,11 +1,25 @@
-build:
-    dependencies:
-        before:
-            - 'composer install'
+filter:
+    excluded_paths:
+        - Tests/*
+        - vendor/*
+        - Features/*
+checks:
+    php: true
 build:
     environment:
         php:
             version: 7.1
-    tests:
-        override:
-            - 'vendor/bin/phpunit --bootstrap vendor/autoload.php Tests/Units'
+    nodes:
+        analysis:
+            project_setup:
+                override: true
+            tests:
+                override: [php-scrutinizer-run]
+        tests_node:
+            tests:
+                override:
+                    -
+                        command: 'vendor/bin/phpunit --bootstrap vendor/autoload.php --coverage-clover=coverage.clover Tests/Units'
+                        coverage:
+                            file: 'coverage-clover'
+                            format: 'clover'
