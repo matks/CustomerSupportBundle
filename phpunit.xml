@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit colors="true">
+<phpunit colors="true" bootstrap="vendor/autoload.php">
     <testsuites>
         <testsuite name="Bundle Test Suite">
             <directory>Tests/Units</directory>
@@ -12,4 +12,7 @@
             </exclude>
         </whitelist>
     </filter>
+    <logging>
+        <log type="coverage-clover" target="coverage.clover"/>
+    </logging>
 </phpunit>
