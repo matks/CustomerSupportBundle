@@ -21,7 +21,7 @@ Add the private repository metadata in your composer.json
 ```json
 {
     "require": {
-        "matks/customer-support-bundle": "1.1"
+        "matks/customer-support-bundle": "1.2"
     },
 }
 ```
@@ -69,7 +69,7 @@ $ composer install --dev
 
 Run the unit tests suite with phpunit binary
 ```bash
-$ vendor/bin/phpunit --bootstrap vendor/autoload.php --printer=Codedungeon\\PHPUnitPrettyResultPrinter\\Printer Tests/Units
+$ vendor/bin/phpunit
 ```
 
 Run acceptance tests with behat binary using the fixture application and sqlite
