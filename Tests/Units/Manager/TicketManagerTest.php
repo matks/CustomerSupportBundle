@@ -17,6 +17,7 @@ class TicketManagerTest extends TestCase
         $doctrineMock           = $this->getBasicMock('\Doctrine\Common\Persistence\ManagerRegistry');
 
         $manager = new Manager\TicketManager($doctrineMock, $referenceGeneratorMock, 'foo');
+        $this->assertNotNull($manager);
     }
 
     public function testCreate()

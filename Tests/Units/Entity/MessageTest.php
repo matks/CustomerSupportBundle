@@ -19,4 +19,13 @@ class MessageTest extends TestCase
 
         $this->assertInstanceOf('\Matks\Bundle\CustomerSupportBundle\Model\MessageInterface', $message);
     }
+
+    public function testGetTitle()
+    {
+        $userMock = $this->getBasicMock('\Matks\Bundle\CustomerSupportBundle\Model\UserInterface');
+
+        $message = new Entity\Message('Message title', $userMock, 'Message content');
+
+        $this->assertEquals('Message title', $message->getTitle());
+    }
 }

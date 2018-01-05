@@ -16,6 +16,7 @@ class CategoryManagerTest extends TestCase
         $doctrineMock = $this->getBasicMock('\Doctrine\Common\Persistence\ManagerRegistry');
 
         $manager = new Manager\CategoryManager($doctrineMock, 'foo');
+        $this->assertNotNull($manager);
     }
 
     public function testCreate()

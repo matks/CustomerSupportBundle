@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Exception;
+use LogicException;
 
 use Matks\Bundle\CustomerSupportBundle\Model\UserInterface;
 
@@ -131,6 +131,6 @@ class User implements UserInterface
      */
     public function isACustomer()
     {
-        throw new Exception("This function should never be called on a user");
+        throw new LogicException("This function should never be called on a user");
     }
 }

@@ -13,6 +13,9 @@
             <exclude>
                 <directory suffix=".php">vendor</directory>
                 <directory suffix=".php">Tests</directory>
+                <directory suffix=".php">Repository</directory>
+                <directory suffix=".php">DependencyInjection</directory>
+                <directory suffix=".php">Features</directory>
             </exclude>
         </whitelist>
     </filter>
